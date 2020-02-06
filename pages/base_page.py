@@ -1,5 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 import math
+import time
 
 
 class BasePage():
@@ -24,7 +25,7 @@ class BasePage():
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
-        alert.accept()
+        alert.accept()       
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text

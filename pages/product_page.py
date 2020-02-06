@@ -15,7 +15,7 @@ class ProductPage(BasePage):
         add_to_cart = self.browser.find_element(*ProductPageLocator.ADD_BUTTON)
         add_to_cart.click()
         self.solve_quiz_and_get_code()
-        time.sleep(3)
+        time.sleep(10)
 
     def should_be_same_order_title_in_cart(self):
         order_title = self.browser.find_element(*ProductPageLocator.ORDER_TITLE)
@@ -24,3 +24,4 @@ class ProductPage(BasePage):
 
     def should_be_same_order_price_in_cart(self):
         pass
+        
