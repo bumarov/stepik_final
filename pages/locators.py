@@ -14,5 +14,5 @@ class LoginPageLocator():
 class ProductPageLocator():
     PROMO_URL = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/?promo=newYear"
     ADD_BUTTON = (By.XPATH, "//button[contains(@class, 'btn-add-to-basket')]")
-    ORDER_TITLE = (By.XPATH, "//h1")
-    ALERT_ORDER_TITLE = (By.XPATH, "//div[@class='alertinner']//strong")
+    ORDER_TITLE = (By.CSS_SELECTOR, "h1")
+    ALERT_ORDER_TITLE = (By.CSS_SELECTOR, "div.alertinner strong")

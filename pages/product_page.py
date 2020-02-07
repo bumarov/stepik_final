@@ -15,12 +15,12 @@ class ProductPage(BasePage):
         add_to_cart = self.browser.find_element(*ProductPageLocator.ADD_BUTTON)
         add_to_cart.click()
         self.solve_quiz_and_get_code()
-        time.sleep(10)
+        time.sleep(3)
 
     def should_be_same_order_title_in_cart(self):
-        order_title = self.browser.find_element(*ProductPageLocator.ORDER_TITLE)
-        in_alert_order_title = self.browser.find_element(*ProductPageLocator.ALERT_ORDER_TITLE)
-        assert order_title == in_alert_order_title, "Order titles not identical"
+        order_title = self.browser.find_element(*ProductPageLocator.ORDER_TITLE)        
+        in_alert_order_title = self.browser.find_element(*ProductPageLocator.ALERT_ORDER_TITLE)        
+        assert order_title.text == in_alert_order_title.text, "Order titles not identical"
 
     def should_be_same_order_price_in_cart(self):
         pass
