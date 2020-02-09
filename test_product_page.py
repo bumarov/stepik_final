@@ -23,7 +23,7 @@ def test_quest_can_add_product_to_basket(browser, link):
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, ProductPageLocator.PROMO_URL)
     page.open()
-    page.click_add_to_cart_button()
+    page.check_regular_adding_to_cart()
 
 
 def test_guest_cant_see_success_message():

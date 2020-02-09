@@ -9,10 +9,16 @@ import time
 
 class ProductPage(BasePage):
 
+    # For New Year Promo pages. With quiz modal window
     def check_add_to_cart(self):
         self.click_add_to_cart_button_promo()
         self.should_be_same_order_title_in_cart()
         self.should_be_same_order_price_in_cart()
+
+    # For regural actions. Add to cart some product.
+    def check_regular_adding_to_cart(self):
+        self.click_add_to_cart_button()
+        self.is_not_element_present()
 
     def click_add_to_cart_button_promo(self):
         add_to_cart = self.browser.find_element(*ProductPageLocator.ADD_BUTTON)
@@ -32,11 +38,6 @@ class ProductPage(BasePage):
     def should_be_same_order_price_in_cart(self):
         pass
 
-    def is_not_element_present(self, how, what, timeout=4):
-        try:
-            WebDriverWait(self.browser, timeout).until(
-                EC.presence_of_element_located((how, what)))
-        except TimeoutException:
-            return True
-
-        return False
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
