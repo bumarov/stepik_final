@@ -1,4 +1,7 @@
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from .locators import BasePageLocator
 import math
 
 
@@ -7,7 +10,7 @@ class BasePage():
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
+        # self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
@@ -32,5 +35,24 @@ class BasePage():
                 EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
-
         return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
+                until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return False
+        return True
+
+    def go_to_login_page(self):
+        login_link = self.browser.find_element(*BasePageLocator.LOGIN_LINK_INVALID)
+        login_link.click()
+
+    def click_to_login_link(self):
+        login_link = self.browser.find_element(*BasePageLocator.LOGIN_LINK)
+        login_link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_presented(*BasePageLocator.LOGIN_LINK), \
+            "Login link is not presented"
