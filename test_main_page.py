@@ -1,15 +1,14 @@
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
-from selenium import webdriver
+from .pages.locators import BasePageLocator
 import pytest
 import time
 
 
 @pytest.mark.skip
 def test_guest_can_go_to_login_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/"
-    page = MainPage(browser, link)
+    page = MainPage(browser, BasePageLocator.MAIN_URL)
     page.open()
     page.go_to_login_page()
     login_page = LoginPage(browser, browser.current_url)
@@ -17,10 +16,10 @@ def test_guest_can_go_to_login_page(browser):
 
 
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/"
-    page = MainPage(browser, link)
+    page = MainPage(browser, BasePageLocator.MAIN_URL)
     page.open()
     page.go_to_basket_page()
     basket_page = BasketPage(browser, browser.current_url)
     time.sleep(3)
     basket_page.should_be_empty_basket()
+    basket_page.should_not_be_empty_basket()

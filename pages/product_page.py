@@ -30,7 +30,7 @@ class ProductPage(BasePage):
         self.should_not_be_success_message()
 
     def check_regular_adding_to_cart_with_disappearing(self):
-        self.click_add_to_cart_button()        
+        self.click_add_to_cart_button()
         self.should_not_be_success_message_with_disappearing()
 
     def should_be_same_order_title_in_cart(self):
