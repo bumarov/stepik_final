@@ -46,7 +46,7 @@ class BasePage():
         return True
 
     def go_to_login_page(self):
-        login_link = self.browser.find_element(*BasePageLocator.LOGIN_LINK_INVALID)
+        login_link = self.browser.find_element(*BasePageLocator.LOGIN_LINK)
         login_link.click()
 
     def click_to_login_link(self):
