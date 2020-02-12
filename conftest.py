@@ -11,4 +11,5 @@ def pytest_addoption(parser):
 def browser(request):    
     browser = webdriver.Chrome()    
     yield browser
+    browser.delete_all_cookies()
     browser.quit()
