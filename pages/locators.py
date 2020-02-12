@@ -22,7 +22,6 @@ class ProductPageLocator():
 
     REGULAR_URL = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
 
-    # ADD_BUTTON = (By.XPATH, "//form[@id='add_to_basket_form']//button[contains(@class,'btn-add-to-basket')]")
     ADD_BUTTON = (By.CSS_SELECTOR, "button.btn-add-to-basket")
     ORDER_TITLE = (By.CSS_SELECTOR, "h1")
     ALERT_ORDER_TITLE = (By.CSS_SELECTOR, "div.alertinner strong")

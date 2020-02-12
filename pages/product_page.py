@@ -15,6 +15,10 @@ class ProductPage(BasePage):
         self.should_be_same_order_title_in_cart()
         self.should_be_same_order_price_in_cart()
 
+    def check_user_add_to_cart(self):
+        self.click_add_to_cart_button()
+        self.should_be_same_order_title_in_cart()
+
     # For regural actions. Add to cart some product.
     def check_regular_adding_to_cart(self):
         self.click_add_to_cart_button()
